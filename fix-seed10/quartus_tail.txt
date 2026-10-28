@@ -1,0 +1,60 @@
+    Info (332119):    -0.258             -11.393 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    -0.246             -10.541 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.083               0.000 clk_14_318 
+    Info (332119):     0.118               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.121               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.121               0.000 pll_audio|pll_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.125               0.000 FPGA_CLK2_50 
+    Info (332119):     0.139               0.000 sysmem|fpga_interfaces|clocks_resets|h2f_user0_clk 
+    Info (332119):     0.165               0.000 FPGA_CLK1_50 
+    Info (332119):     0.173               0.000 spi_sck 
+    Info (332119):     0.815               0.000 SDRAM_CLK 
+    Info (332119):     6.044               0.000 VCLK_SDIO 
+Info (332146): Worst-case recovery slack is -1.739
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):    -1.739           -9801.111 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    -1.731           -9755.159 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.245               0.000 sysmem|fpga_interfaces|clocks_resets|h2f_user0_clk 
+    Info (332119):    16.286               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    18.444               0.000 FPGA_CLK1_50 
+Info (332146): Worst-case removal slack is 0.185
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.259               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.294               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.306               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.425               0.000 FPGA_CLK1_50 
+    Info (332119):     0.844               0.000 sysmem|fpga_interfaces|clocks_resets|h2f_user0_clk 
+Info (332146): Worst-case minimum pulse width slack is 0.793
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.793               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
+    Info (332119):     1.196               0.000 pll_audio|pll_audio_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
+    Info (332119):     3.900               0.000 sysmem|fpga_interfaces|clocks_resets|h2f_user0_clk 
+    Info (332119):     4.569               0.000 spi_sck 
+    Info (332119):     7.613               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     7.632               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[2].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     8.470               0.000 FPGA_CLK2_50 
+    Info (332119):     9.078               0.000 FPGA_CLK1_50 
+    Info (332119):     9.274               0.000 FPGA_CLK3_50 
+    Info (332119):    16.333               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    18.714               0.000 emu|pll_system_inst|pll_system_inst|altera_pll_i|general[3].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    19.231               0.000 pll_audio|pll_audio_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    34.269               0.000 clk_14_318 
+Info (332114): Report Metastability: Found 606 synchronizer chains.
+    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus Prime TimeQuest Timing Analyzer was successful. 0 errors, 20 warnings
+    Info: Peak virtual memory: 2813 megabytes
+    Info: Processing ended: Wed Oct 28 22:14:56 2026
+    Info: Elapsed time: 00:01:48
+    Info: Total CPU time (on all processors): 00:04:51
+Info (293000): Quartus Prime Full Compilation was successful. 0 errors, 811 warnings
+Info (23030): Evaluation of Tcl script /opt/intelFPGA_lite/quartus/common/tcl/internal/qsh_flow.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 812 warnings
+    Info: Peak virtual memory: 834 megabytes
+    Info: Processing ended: Wed Oct 28 22:14:56 2026
+    Info: Elapsed time: 00:26:11
+    Info: Total CPU time (on all processors): 00:58:56

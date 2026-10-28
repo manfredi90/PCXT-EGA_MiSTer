@@ -1,0 +1,3 @@
+fix-seed10         -29.481
+upstream-default   -28.599
+upstream-seed10    -28.166
