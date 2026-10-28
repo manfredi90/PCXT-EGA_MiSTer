@@ -47,6 +47,19 @@ jobs:
           tail -60 quartus.log > out/${{ matrix.name }}/quartus_tail.txt || true
           grep -h "Slack" output_files/PCXT-EGA.sta.summary | awk '{print $3}' | sort -n | head -1 > out/${{ matrix.name }}/worst_slack.txt || true
 
+      - name: Push diagnostics to a branch
+        if: always()
+        run: |
+          cd out/${{ matrix.name }}
+          rm -f *.rbf
+          ls -la
+          git init -q
+          git checkout -q -b diag-${{ matrix.name }}
+          git add -A
+          git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" \
+            commit -q -m "Diagnostics ${{ matrix.name }} of ${{ github.sha }}"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" diag-${{ matrix.name }}
+
       - uses: actions/upload-artifact@v4
         if: always()
         with:
