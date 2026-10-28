@@ -1604,7 +1604,12 @@ module emu
     wire uart_rx  = hps_midi | UART_RXD;
     wire uart_cts = hps_midi | UART_CTS;
     wire uart_dsr = hps_midi | UART_DSR;
-    wire uart_dcd = hps_midi | UART_DTR;
+    // DCD comes from the HPS side as well, like ao486: sys_top crosses the
+    // lines null-modem style, so UART_DSR is the Linux UART's DTR, raised by
+    // the soft modem / pppd / getty. It used to be UART_DTR, the core's own
+    // DTR output, so the guest saw "carrier" whenever it raised DTR itself and
+    // never saw a hang-up.
+    wire uart_dcd = hps_midi | UART_DSR;
 
 
     /// UART2
