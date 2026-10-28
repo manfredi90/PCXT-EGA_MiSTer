@@ -21,6 +21,21 @@ jobs:
       matrix:
         include:
           - { name: fix-seed1, ref: "", seed: 1 }
+          - { name: fix-seed2, ref: "", seed: 2 }
+          - { name: fix-seed3, ref: "", seed: 3 }
+          - { name: fix-seed4, ref: "", seed: 4 }
+          - { name: fix-seed5, ref: "", seed: 5 }
+          - { name: fix-seed6, ref: "", seed: 6 }
+          - { name: fix-seed7, ref: "", seed: 7 }
+          - { name: fix-seed8, ref: "", seed: 8 }
+          - { name: fix-seed9, ref: "", seed: 9 }
+          - { name: fix-seed10, ref: "", seed: 10 }
+          - { name: fix-seed11, ref: "", seed: 11 }
+          - { name: fix-seed12, ref: "", seed: 12 }
+          - { name: fix-seed13, ref: "", seed: 13 }
+          - { name: fix-seed14, ref: "", seed: 14 }
+          - { name: fix-seed15, ref: "", seed: 15 }
+          - { name: fix-seed16, ref: "", seed: 16 }
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,7 +43,7 @@ jobs:
 
       - name: Set fitter seed
         if: matrix.seed != 0
-        run: echo 'set_global_assignment -name SEED ${{ matrix.seed }}' >> PCXT-EGA.qsf
+        run: printf '\nset_global_assignment -name SEED %s\n' '${{ matrix.seed }}' >> PCXT-EGA.qsf
 
       - name: Compile with Quartus 17.0.2 Lite
         run: |
@@ -46,19 +61,6 @@ jobs:
           grep -E "^(Error|Critical Warning)" quartus.log | head -100 > out/${{ matrix.name }}/errors.txt || true
           tail -60 quartus.log > out/${{ matrix.name }}/quartus_tail.txt || true
           grep -h "Slack" output_files/PCXT-EGA.sta.summary | awk '{print $3}' | sort -n | head -1 > out/${{ matrix.name }}/worst_slack.txt || true
-
-      - name: Push diagnostics to a branch
-        if: always()
-        run: |
-          cd out/${{ matrix.name }}
-          rm -f *.rbf
-          ls -la
-          git init -q
-          git checkout -q -b diag-${{ matrix.name }}
-          git add -A
-          git -c user.name="github-actions" -c user.email="github-actions@users.noreply.github.com" \
-            commit -q -m "Diagnostics ${{ matrix.name }} of ${{ github.sha }}"
-          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" diag-${{ matrix.name }}
 
       - uses: actions/upload-artifact@v4
         if: always()
