@@ -129,6 +129,7 @@ module CHIPSET #(
         output  logic   [15:0]  o_cms_r,
         // UART
         input   logic           clk_uart,
+        input   logic           clk_uart_com2,
         input   logic           uart2_rx,
         output  logic           uart2_tx,
         input   logic           uart2_cts_n,
@@ -394,6 +395,7 @@ module CHIPSET #(
         .cpu_ce_posedge                     (cpu_ce_posedge),
         .cpu_ce_negedge                     (cpu_ce_negedge),
         .clk_uart                           (clk_uart),
+        .clk_uart_com2                      (clk_uart_com2),
         .peripheral_ce                      (peripheral_ce),
         .clk_select                         (clk_select),
         .reset                              (reset),

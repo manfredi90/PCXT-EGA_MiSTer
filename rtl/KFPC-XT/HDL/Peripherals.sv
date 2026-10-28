@@ -114,6 +114,7 @@ module PERIPHERALS #(
         output  reg     [15:0]  o_cms_r,
         // UART
         input   logic           clk_uart,
+        input   logic           clk_uart_com2,      // 1.8432 MHz reference for COM2 only
         input   logic           uart2_rx,
         output  logic           uart2_tx,
         input   logic           uart2_cts_n,
@@ -956,10 +957,10 @@ end
     );
 	 
 
-    uart uart2
+    uart #(.RX_MIDSTOP(1)) uart2
     (
         .clk               (clock),
-        .br_clk            (clk_uart),
+        .br_clk            (clk_uart_com2),
         .reset             (reset),
 
         .address           (address[2:0]),

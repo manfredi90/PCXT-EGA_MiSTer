@@ -1275,6 +1275,7 @@ module emu
 		.o_cms_l                            (cms_l_snd_e),
 		.o_cms_r                            (cms_r_snd_e),
 		.clk_uart                           (clk_uart2_en),
+		.clk_uart_com2                      (clk_com2_en),
 		.uart2_rx                           (uart_rx),
 		.uart2_tx                           (uart_tx),
 		.uart2_cts_n                        (uart_cts),
@@ -1555,6 +1556,29 @@ module emu
         begin
             clk_uart2_counter <= clk_uart2_counter;
             clk_uart2_en <= 1'b0;
+        end
+    end
+
+    // COM2 baud reference: a real 8250/16550 card runs from a 1.8432 MHz
+    // crystal and DOS divisors assume it. 14.318/8 = 1.7898 MHz made every
+    // COM2 rate 2.9% slow, enough to garble data coming from the HPS (modem,
+    // PPP). 1.8432/50 = 576/15625, so this fractional accumulator gives an
+    // exact 1.8432 MHz average from the 50 MHz clk_chipset (pulses every 27 or
+    // 28 cycles, 20 ns jitter). COM1 (internal mouse) keeps clk_uart2_en.
+    logic [13:0] clk_com2_acc = 14'd0;
+    logic        clk_com2_en  = 1'b0;
+
+    always @(posedge clk_chipset)
+    begin
+        if (clk_com2_acc >= 14'd15049)      // 15625 - 576
+        begin
+            clk_com2_acc <= clk_com2_acc - 14'd15049;
+            clk_com2_en  <= 1'b1;
+        end
+        else
+        begin
+            clk_com2_acc <= clk_com2_acc + 14'd576;
+            clk_com2_en  <= 1'b0;
         end
     end
 
